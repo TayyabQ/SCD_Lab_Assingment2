@@ -15,8 +15,20 @@ jobs:
 
     - name: Use Node.js 14.x
       uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
+       with:
+    node-version: '14.x'
+    always-auth: true  # Ensure authentication for package downloads
+    debug: true  # Enable debug logs
 
     - name: Install dependencies
       run: npm install
+
+    - name: Run linting
+  run: npm run lint
+  env:
+    CI: true  # Set CI environment variable if needed
+
+- name: Run tests
+  run: npm test
+  env:
+    CI: true  # Set CI environment variable if needed
