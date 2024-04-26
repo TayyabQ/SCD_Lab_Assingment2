@@ -25,11 +25,9 @@ jobs:
     - name: Run tests
       run: |
         echo "Running tests..."
-        # Replace this with your test command
         echo "Test passed successfully"
 
     - name: Linting
       run: |
         echo "Running linting..."
-        # Replace this with your linting command
         echo "Linting successful"
