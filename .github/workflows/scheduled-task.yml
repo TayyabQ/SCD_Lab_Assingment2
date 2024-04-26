@@ -1,0 +1,21 @@
+name: Scheduled Tasks
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  perform-task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Execute scheduled task
+        run: |
+          echo "Executing maintenance task..."
+
+      - name: Notify completion
+        run: |
+          echo "Maintenance task completed successfully"
