@@ -1,10 +1,11 @@
 name: Dependency Updates
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  pull_request:
+    types: [opened, synchronize]
+
 jobs:
-  check-and-update:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,14 +20,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Update dependencies
-        run: npm update
-
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'chore: update dependencies'
-          branch: dependency-updates
-          title: 'chore: update dependencies'
-          body: 'This PR updates project dependencies.'
+      - name: Run tests
+        run: npm test
